@@ -6,7 +6,10 @@
 
 package Decorador;
 
+import java.awt.Canvas;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -14,17 +17,60 @@ import javax.swing.JPanel;
  *
  * @author oscar
  */
-public class Decorado1 extends Decorado{
-    
+public class Decorado1 extends Decorado implements Runnable{
+    private boolean decorado;
+    private  Canvas canvas1;
+    private Graphics g;
+    private Graphics decoracion;
+    private BufferedImage dobleBuffer;
+    private Thread dibujo;
+    public Decorado1(){
+        super();
+        dibujo=new Thread(this);
+        canvas1=new Canvas();
+        canvas1.setSize(180, 345);
+        dobleBuffer=new BufferedImage(canvas1.getWidth(), canvas1.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        g=dobleBuffer.getGraphics();
+        decoracion=canvas1.getGraphics();
+        dibujo.start();
+        personaje.add(canvas1);
+    }
 
-    public Decorado1(JPanel decorado){
-        super(decorado);
-    }    
+    
+       
+    
     
     @Override
     public JPanel decorar() {
-        decorado.add(new JLabel());
-        return decorado;
+        
+        return personaje;
+    }
+
+    @Override
+    public void run() {
+        while(true){
+            dibujar();
+        }
+    }
+
+    public Thread getDibujo() {
+        return dibujo;
+    }
+
+    public void setDibujo(Thread dibujo) {
+        this.dibujo = dibujo;
+    }
+    
+    
+    private void dibujar() {
+        g.drawImage(anim.getImage(), 0, 0, null);
+        
+        if(decorado){
+            
+        }
+        g.drawImage(anim.getImage(), 0, 0, null);
+        
+        decoracion.drawImage(dobleBuffer,0,0,canvas1);
     }
     
 }

@@ -7,6 +7,8 @@
 package Decorador;
 
 import java.awt.Graphics;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -14,9 +16,18 @@ import javax.swing.JPanel;
  * @author oscar
  */
 public abstract class Decorado implements Component{
-    protected JPanel decorado;
+    protected JPanel personaje;
+    protected ImageIcon anim;
     
-    public Decorado(JPanel componente){
-        this.decorado=componente;
+    public Decorado(){
+        this.personaje=new JPanel();
+        
+    }
+    public ImageIcon getAnim() {
+        return anim;
+    }
+
+    public void setAnim(ImageIcon anim) {
+        this.anim = anim;
     }
 }
