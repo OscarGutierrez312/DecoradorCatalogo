@@ -214,6 +214,7 @@ public class Interfaz extends JFrame implements ActionListener {
         decorar=new JButton("decorar");
         decorar.setLocation(10,450);
         decorar.setSize(200, 40);
+        decorar.setBackground(new Color (100,2,4));
         decorar.setBorder(BorderFactory.createLineBorder(Color.WHITE,2));
         decorar.setContentAreaFilled(true);
         decorar.setPreferredSize(new Dimension(0,58));
@@ -231,6 +232,8 @@ public class Interfaz extends JFrame implements ActionListener {
         decoracion.setBorder(BorderFactory.createLineBorder(Color.black));
         decoracion.add(arma);
         
+        decoradores=decorado1.decorar();
+        decoracion.add(decoradores);
         
         
         
@@ -323,12 +326,13 @@ public class Interfaz extends JFrame implements ActionListener {
 
 		if (e.getSource() == btn_hechicero) {
 			director = new Client();
-
+                        decoradores.setVisible(false);
+                        arma.setVisible(true);
 			constructorPersonaje = new  ConstructorHechicero();
 			director.setConstructorPersonaje(constructorPersonaje);
 			director.construirPersonaje();
-			
 			personaje = director.getPersonaje();
+                        decorado1.setAnim(new ImageIcon(personaje.getAtaque()));
 			generarVistaPersonaje(img_hechicero,panelPersonajeH);
 
 
@@ -338,32 +342,38 @@ public class Interfaz extends JFrame implements ActionListener {
 
 		if (e.getSource() == btn_guerrero) {
 			director = new Client();
-
+                        decoradores.setVisible(false);
+                        arma.setVisible(true);
 			constructorPersonaje = new  ConstructorGuerrero();
 			director.setConstructorPersonaje(constructorPersonaje);
 			director.construirPersonaje();
 			personaje = director.getPersonaje();
+                        decorado1.setAnim(new ImageIcon(personaje.getAtaque()));
 			generarVistaPersonaje( img_guerrero, panelPersonajeG);
 
 		}
 
 		if (e.getSource() == btn_elfo){
 			director = new Client();
-
+                        decoradores.setVisible(false);
+                        arma.setVisible(true);
 			constructorPersonaje = new  ConstructorElfo();
 			director.setConstructorPersonaje(constructorPersonaje);
 			director.construirPersonaje();
 			personaje = director.getPersonaje();
+                        decorado1.setAnim(new ImageIcon(personaje.getAtaque()));
 			generarVistaPersonaje( img_elfo, panelPersonajeE);
 
 		}
 		if (e.getSource() == btn_nativo){
 			director = new Client();
-
+                        decoradores.setVisible(false);
+                        arma.setVisible(true);
 			constructorPersonaje = new  ConstructorElfo();
 			director.setConstructorPersonaje(constructorPersonaje);
 			director.construirPersonaje();
 			personaje = director.getPersonaje();
+                        decorado1.setAnim(new ImageIcon(personaje.getAtaque()));
 			generarVistaPersonaje( img_nativo, panelPersonajeE);
 
 		}
@@ -372,8 +382,13 @@ public class Interfaz extends JFrame implements ActionListener {
         }
         if (e.getSource() == decorar){
             arma.setVisible(false);
-            decorado1.setAnim(new ImageIcon(personaje.getAtaque()));
-            decoracion.add(decorado1.decorar());
+            decorado1.getDibujo().start();
+            try{
+                Thread.sleep(1000);
+            }catch(Exception l){
+                
+            }
+            decorado1.getDibujo().stop();
         }
 
 	}
