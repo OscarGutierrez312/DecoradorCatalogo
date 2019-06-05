@@ -1,8 +1,9 @@
 # DecoradorCatalogo
 
-Implementacion de PAtron decorador e integracion de su parte grafica con un boton en la parte inferior izquierda de la ventana principal.
+Implementacion de Patron decorador e integracion de su parte grafica con un boton en la parte inferior izquierda de la ventana principal.
 
-Integrantes:
+Integrantes:.
+
 Daniel Rodriguez.
 
 Isaac Gamboa.
