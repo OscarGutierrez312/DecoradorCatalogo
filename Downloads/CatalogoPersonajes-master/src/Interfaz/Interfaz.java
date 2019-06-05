@@ -382,6 +382,7 @@ public class Interfaz extends JFrame implements ActionListener {
         }
         if (e.getSource() == decorar){
             arma.setVisible(false);
+            decoradores.setVisible(true);
             decorado1.getDibujo().start();
             try{
                 Thread.sleep(1000);
