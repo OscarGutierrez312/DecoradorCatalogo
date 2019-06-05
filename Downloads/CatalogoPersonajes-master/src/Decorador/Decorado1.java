@@ -66,7 +66,7 @@ public class Decorado1 extends Decorado implements Runnable{
         g.drawImage(anim.getImage(), 0, 0, null);
         
         if(decorado){
-            
+            g.drawImage(new imageIcon("./img/fondodecorador.jpg"),0,0,null);
         }
         g.drawImage(anim.getImage(), 0, 0, null);
         
