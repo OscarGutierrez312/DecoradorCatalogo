@@ -1,6 +1,7 @@
 package Interfaz;
 
 
+import Decorador.Decorado1;
 import Factorias.*;
 import builder.ConstructorElfo;
 import builder.ConstructorGuerrero;
@@ -14,6 +15,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -82,7 +84,7 @@ public class Interfaz extends JFrame implements ActionListener {
          
 	private String[] datos;
 
-
+        private Decorado1 decorado1=new Decorado1();
 
 
 
@@ -216,6 +218,7 @@ public class Interfaz extends JFrame implements ActionListener {
         decorar.setContentAreaFilled(true);
         decorar.setPreferredSize(new Dimension(0,58));
         decorar.setHorizontalAlignment(SwingConstants.CENTER);
+        decorar.addActionListener(this);
         
         arma=new JLabel();
         arma.setHorizontalAlignment(SwingConstants.CENTER);
@@ -228,9 +231,8 @@ public class Interfaz extends JFrame implements ActionListener {
         decoracion.setBorder(BorderFactory.createLineBorder(Color.black));
         decoracion.add(arma);
         
-        decoradores=new JPanel();
-        decoracion.setBorder(BorderFactory.createLineBorder(Color.red));
-        decoracion.add(decoradores);
+        
+        
         
         
 
@@ -368,7 +370,11 @@ public class Interfaz extends JFrame implements ActionListener {
         if (e.getSource() == btn_ataque){
             arma.setIcon(new ImageIcon(personaje.getAtaque()));
         }
-
+        if (e.getSource() == decorar){
+            arma.setVisible(false);
+            decorado1.setAnim(new ImageIcon(personaje.getAtaque()));
+            decoracion.add(decorado1.decorar());
+        }
 
 	}
 
