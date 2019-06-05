@@ -29,11 +29,13 @@ public class Decorado1 extends Decorado implements Runnable{
         dibujo=new Thread(this);
         canvas1=new Canvas();
         canvas1.setSize(180, 345);
+        canvas1.setBackground(new java.awt.Color(255, 255, 255));
         dobleBuffer=new BufferedImage(canvas1.getWidth(), canvas1.getHeight(), BufferedImage.TYPE_INT_ARGB);
         g=dobleBuffer.getGraphics();
         decoracion=canvas1.getGraphics();
-        
+        canvas1.setVisible(true);
         personaje.add(canvas1);
+        
     }
 
     
@@ -63,12 +65,13 @@ public class Decorado1 extends Decorado implements Runnable{
     
     
     private void dibujar() {
-        g.drawImage(anim.getImage(), 0, 0, canvas1);
+        g.drawImage(anim.getImage(), 0, 0, null);
         System.out.print("Dibujando");
         if(decorado){
             g.drawImage(new ImageIcon("./img/fondodecorador.jpg").getImage(),0,0,null);
         }
-        decoracion.drawImage(dobleBuffer,0,0,canvas1);
+        decoracion.drawImage(dobleBuffer, 0, 0, canvas1);
+        
     }
     
 }
